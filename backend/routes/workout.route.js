@@ -1,10 +1,14 @@
+/**
+ * Name: workout.controller.js
+ * Description:
+ */
 const router = require('express').Router();
-
+const workoutController = require('../controllers/workout.controller');
 // Workout routes
-router.get('/workouts')
-router.post('/workouts')
-router.get('/workouts/:id')
-router.delete('/workouts/:id')
-router.patch('/workouts/:id')
+router.get('/', workoutController.getAllData);
+router.post('/', workoutController.createNewWorkout);
+router.get('/:id', workoutController.getWorkoutById);
+router.delete('/:id', workoutController.deleteWorkout);
+router.patch('/:id', workoutController.updateWorkout);
 
 module.exports = router;
