@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import CreateWorkout from '../components/CreateWorkout';
 // Components
-import WorkoutDetails from '../components/WorkoutDetails'
+import WorkoutDetails from '../components/WorkoutDetails';
 const Home = () => {
   const [workouts, setWorkouts] = useState(null);
   // const [isPending, setIsPending] = useState(true);
@@ -18,14 +19,23 @@ const Home = () => {
     };
     fetchWorkouts();
   }, []);
+
   return (
-    <div className='grid grid-cols-1 gap-2 my-2 rounded-xl mx-auto md:w-9/12 lg:w-6/12 lg:gap-6'>
-      {workouts &&
-        workouts.map((workout) => {
-          return (
-            <WorkoutDetails key={workout.id} workout={workout}/>
-          );
-        })}
+    <div className="md:grid md:grid-cols-3 mx-auto w-9/12">
+      <div className="md:col-span-2 grid gap-2 my-2 rounded-xl ">
+        {workouts &&
+          workouts.map((workout) => {
+            return  (
+              <WorkoutDetails 
+              key={workout.id} 
+              workout={workout}
+              />
+            )
+          })}
+      </div>
+      <div>
+        <CreateWorkout />
+      </div>
     </div>
   );
 };
